@@ -8,7 +8,7 @@ public class Lanes extends Thread {
 	int timeToProcess;
 	boolean isFree;
 	static Queue<Car> carQueue;
-	int timer;
+	 int timer;
 
 	public Lanes(String laneId, Queue<Car> queue) {
 		super();
@@ -78,18 +78,19 @@ public class Lanes extends Thread {
 					 */
 				} else {
 					timeToProcess--;
+					timer++;
 					if (timeToProcess <= 0)
 						isFree = true;
 				}
 
 				try {
-					timer += 1;
-					Thread.sleep(2000);
+					
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				
 			}
 			
 		}
