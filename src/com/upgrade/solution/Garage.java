@@ -32,20 +32,18 @@ public class Garage {
 	public static void main(String[] args) {
 
 		Queue<Car> cars = new LinkedList<>();
-		Car car1 = new Car(2, "1");
-		Car car2 = new Car(20, "2");
-		Car car3 = new Car(4, "3");
-		Car car4 = new Car(5, "4");
-		Car car5 = new Car(4, "5");
-		Car car6 = new Car(8, "6");
-		Car car7 = new Car(12, "7");
-		cars.add(car1);
-		cars.add(car2);
-		cars.add(car3);
-		cars.add(car4);
-		cars.add(car5);
-		cars.add(car6);
-		cars.add(car7);
+		cars.add(new Car(1, "1"));
+		cars.add(new Car(1, "2"));
+		cars.add(new Car(1, "3"));
+		cars.add(new Car(1, "4"));
+		cars.add(new Car(1, "5"));
+		cars.add(new Car(1, "6"));
+		cars.add(new Car(1, "7"));
+		cars.add(new Car(1, "8"));
+		cars.add(new Car(1, "9"));
+		cars.add(new Car(1, "10"));
+		cars.add(new Car(1, "11"));
+		cars.add(new Car(1, "12"));
 		Garage g1 = new Garage(cars, 3);
 		g1.startWorking();
 

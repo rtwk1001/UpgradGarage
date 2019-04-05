@@ -59,36 +59,41 @@ public class Lanes extends Thread {
 
 	@Override
 	public void run() {
-		while (!carQueue.isEmpty()) {
-			if (isFree) {
+		
+		synchronized (this) {
+			
+			while (!carQueue.isEmpty()) {
+				if (isFree) {
 
-				currentProcesser = carQueue.poll();
-				if (currentProcesser != null) {
-					timeToProcess = currentProcesser.getTimeToComplete();
-					isFree = false;
+					currentProcesser = carQueue.poll();
+					if (currentProcesser != null) {
+						timeToProcess = currentProcesser.getTimeToComplete();
+						isFree = false;
 
-					System.out.println("Car " + currentProcesser.carId + " is Assigned To ServiceLne " + LaneId
-							+ " at time =" + timer);
+						System.out.println("Car " + currentProcesser.carId + " is Assigned To ServiceLne " + LaneId
+								+ " at time =" + timer);
+					}
+					/*
+					 * else System.exit(0);
+					 */
+				} else {
+					timeToProcess--;
+					if (timeToProcess <= 0)
+						isFree = true;
 				}
-				/*
-				 * else System.exit(0);
-				 */
-			} else {
-				timeToProcess--;
-				if (timeToProcess <= 0)
-					isFree = true;
-			}
 
-			try {
-				timer += 1;
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				try {
+					timer += 1;
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
+			}
+			
 		}
-
+		
 	}
 
 }
